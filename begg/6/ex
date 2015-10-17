@@ -1,0 +1,21 @@
+4
+class Test {
+   int a;
+   Test(int i) { a = 1; }
+
+   void swap(Test o) {
+      int mid = o.a;
+      o.a = a;
+      a = mid;
+   }
+}
+11
+Signature - name of method plus its parameter list.
+
+13
+int sum(int ... values) {
+   var total = 0
+   for (int x: values)
+      total += x;
+   return total;
+}
