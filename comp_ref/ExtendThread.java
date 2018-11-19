@@ -1,35 +1,31 @@
-class NewThread extends Thread{
-   NewThread() {
-      super("Demo thread");
-      System.out.println("Child Thread" + this);
-      start();
-   }
+class MyThread extends Thread {
+    MyThread(String name) {
+        super(name);
+    }
 
-   public void run () {
-      try {
-         for (int i = 5; i > 0; i--) {
-            System.out.println("Second thread: " + i);
-            sleep(500);
-         }
-      } catch (InterruptedException e) {
-         System.out.println("Second Thread interrupted.");
-      }
-   }
+    public void run() {
+        System.out.println(getName() + " starting.");
+        try {
+            for(int count=0; count<10; count++) {
+                Thread.sleep(100);
+                System.out.println(count);
+            }
+        }
+        catch(InterruptedException e) {
+            System.out.println("Exception");
+        }
+
+        System.out.println(getName() + " terminating.");
+    }
 }
 
 class ExtendThread {
-   public static void main(String args[]) {
-      new NewThread();
+    public static void main(STring args[]) {
+        System.out.println("Main thread starting.");
 
-      try {
-         for (int i = 5; i > 0; i--) {
-            System.out.println("Main Thread: " + i);
-            Thread.sleep(1000);
-         }
-      } catch (InterruptedException e) {
-         System.out.println("Main thread interrupted.");
-      }
+        MyThread mt = new MyThread("Child # 1");
 
-      System.out.println("Main thread exiting.");
-   }
+        mt.start();
+
+    }
 }

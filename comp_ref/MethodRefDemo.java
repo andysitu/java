@@ -1,32 +1,31 @@
 interface StringFunc {
-   String func(String n);
+    String func(String n);
 }
 
 class MyStringOps {
-   static String strReverse(String str) {
-      String result = "";
+    static String strReverse(String str) {
+        String result = "";
+        int i;
 
-      int i;
+        for (i = str.length()-1; i >=0; i--) {
+            result += str.charAt(i);
+        }
 
-      for(i = str.length() -1; i >= 0; i--)
-         result += str.charAt(i);
-
-      return result;
-   }
+        return result;
+    }
 }
 
 class MethodRefDemo {
-   static String stringOp(StringFunc sf, String s) {
-      return sf.func(s);
-   }
+    static String stringOp(StringFunc sf, String s) {
+        return sf.func(s);
+    }
 
-   public static void main(String args[]) {
-      String inStr = "Lambdas, Hi, hello, goodbye";
-      String outStr;
+    public static void main(String args[]) {
+        String inStr = "Using Lambdas in Java";
+        String outStr;
 
-      outStr = stringOp(MyStringOps::strReverse, inStr);
+        outStr = stringOp(MyStringOps::strReverse, inStr);
 
-      System.out.println("Original string: " + inStr);
-      System.out.println("String reverse: " + outStr);
-   }
+        System.out.println("Reversed string: " + outStr);
+    }
 }
